@@ -1,16 +1,46 @@
 package org.example.practice.tasks;
 
+import java.util.*;
+
 public class ArrayTasks {
 
+    public static void main(String[] args) {
+        String[] A = new String[]{"a", "a", "t", "e", "f", "i", "j"};
+        String[] B = new String[]{"t", "g", "g", "i", "k", "f"};
+
+        System.out.println(Arrays.toString(differenceBetweenTwoArrays(A, B)));
+    }
 
     /*
       A = [a, a, t, e, f, i, j]
       B = [t, g, g, i, k, f]
       difference = [a, e, g, j, k]
     */
-    public String[] differenceBetweenTwoArrays(String[] firstArray, String[] secondArray) {
+    public static String[] differenceBetweenTwoArrays(String[] firstArray, String[] secondArray) {
+        String[] resultArr = new String[firstArray.length+ secondArray.length];
+        int index = 0;
 
-        return new String[0];
+        for (int i=0; i<firstArray.length; i++) {
+            for (int j=0; j<secondArray.length ; j++) {
+                if (firstArray[i].equals(secondArray[j])) {
+                    firstArray[i] = null;
+                    secondArray[j] = null;
+                    break;
+                }
+            }
+        }
+
+        Set<String> set = new HashSet<>();
+        set.addAll(Arrays.stream(firstArray).toList());
+        set.addAll(Arrays.stream(secondArray).toList());
+
+        for (String s : set) {
+            if (s != null) {
+                resultArr[index++] = s;
+            }
+        }
+
+        return Arrays.copyOf(resultArr, index);
     }
 
     /*
@@ -30,7 +60,7 @@ public class ArrayTasks {
         n = 2  ==> [1, 2, 4]  # [2^0, 2^1, 2^2]
     */
     public long[] powersOf2(int n) {
-        return  new long[0];
+        return new long[0];
     }
 
     /*
