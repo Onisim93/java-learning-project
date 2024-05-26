@@ -40,7 +40,9 @@ public class ArrayTasks {
             }
         }
 
-        return Arrays.copyOf(resultArr, index);
+
+
+        return set.toArray(new String[0]);
     }
 
     /*
